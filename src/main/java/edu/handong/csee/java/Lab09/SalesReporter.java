@@ -1,79 +1,90 @@
 package edu.handong.csee.java.Lab09;
 
+import java.util.Scanner;
 public class SalesReporter {
 	
 	private double highestSales;
 	private double averageSales;
 	private SalesAssociate[] team;
-	private int numberOfAssociates;
+	private int numberOfAssociates = 0;
 
 	public void getData(){
 		String name;
-		double sales
+		double sales;
+		Scanner keyboard = new Scanner(System.in);
 		SalesAssociate associate = new SalesAssociate();
-		System.out.println("Enter the associate number" + numberOfAssociates);
+		System.out.println("Enter the associate number" + (numberOfAssociates+1));
 		System.out.println("Enter name of sales associate : ");
-		
-		associate.setName( );
+		name = keyboard.nextLine();
 		System.out.println("Enter associate's sales : $");
-		associate.setSales( );
+		sales = keyboard.nextDouble();
+		associate.setName(name);
+		associate.setSales(sales);
 		team[numberOfAssociates] = associate;
+		numberOfAssociates++;
 	}
 	
 	public void computeStats(){
 		double SumforAverage = 0.0;
-		double Average;
-		double BestSales = 0.0;
 		String BestAssociate = "";
+		highestSales = 0.0;
 		SalesAssociate associate_2 = new SalesAssociate();
-		for(int i = 0; i>= numberOfAssociates ;i++){
-			associate_2 = team[numberOfAssociates];
+		for(int i = 0; i<=numberOfAssociates ;i++){
+			associate_2 = team[i];
 			SumforAverage += associate_2.getSales();
 			
-			if(BestSales<=associate_2.getSales()){
-				BestSales=associate_2.getSales();
+			if(highestSales<=associate_2.getSales()){
+				highestSales=associate_2.getSales();
 				BestAssociate = associate_2.getName();
 			}
 		}
 		
-		Average = SumforAverage/numberOfAssociates;
+		averageSales = SumforAverage/(numberOfAssociates+1);
 		associate_2.setName(BestAssociate);
-		associate_2.setSales(BestSales);
+		associate_2.setSales(highestSales);
 		team[numberOfAssociates+1] = associate_2;
-		team[numberOfAssociates+2].setSales(Average);
 	}
 	
 	public void displayResults(){
 		SalesAssociate associate_3 = new SalesAssociate();
 		double deviation;
-		double Average = team[numberOfAssociates+2].getSales();
 		associate_3 = team[numberOfAssociates+1];
-		System.out.println("Average sales per associate is $" + Average);
-		System.out.println("The highest sales figure is $" + associate_3.getSales());
-		System.out.println("The following had the highest sales:");
-		System.out.println("Name : " + associate_3.getName());
-		System.out.println("Sales : $" + associate_3.getSales());
-		deviation = associate_3.getSales() - Average;
-		System.out.println("$" + deviation + "above the average.");
-		System.out.println("The rest performed as follows :\n\n");
+		System.out.println("Average sales per associate is $" + averageSales +
+							"\nThe highest sales figure is $" + highestSales +
+							"\nThe following had the highest sales:" +
+							"\nName : " + associate_3.getName() +
+							"\nSales : $" + highestSales +
+							"\n$" + (highestSales-averageSales) + "above the average." +
+							"\nThe rest performed as follows :\n\n");
 		
-		for(int i = 0;i>=numberOfAssociates;i++){
+		for(int i = 0;i<=numberOfAssociates;i++){
 			associate_3 = team[i];
 			System.out.println("Name : " + associate_3.getName());
 			System.out.println("Sales : $" + associate_3.getSales());
-			deviation = associate_3.getSales() - Average;
-			if (deviation>0)
+			deviation = associate_3.getSales() - averageSales;
+			if (deviation>=0)
 				System.out.println("$" + deviation + "above the average.\n");
 			else
-				System.out.println("$" + -deviation + "below the average.\n");
+				System.out.println("$" + (-deviation) + "below the average.\n");
 		}
 	}
 	
 	public void run(){
-		getData();
+		int n;
+		System.out.println("Enter number of sales associates");
+		Scanner scanner = new Scanner(System.in);
+		n = scanner.nextInt();
+		SalesAssociate[] A = new SalesAssociate[10];
+		team = A;
+		
+		for(int t=1;t<=n;t++){
+			getData();
+		}
+		
 		computeStats();
 		displayResults();
 	}
+
 	
 	public static void main(String[] args) {
 		
