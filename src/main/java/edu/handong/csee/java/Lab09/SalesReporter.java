@@ -13,7 +13,7 @@ public class SalesReporter {
 		double sales;
 		Scanner keyboard = new Scanner(System.in);
 		SalesAssociate associate = new SalesAssociate();
-		System.out.println("Enter the associate number" + (numberOfAssociates+1));
+		System.out.println("Enter the associate number " + (numberOfAssociates+1));
 		System.out.println("Enter name of sales associate : ");
 		name = keyboard.nextLine();
 		System.out.println("Enter associate's sales : $");
@@ -49,13 +49,13 @@ public class SalesReporter {
 		SalesAssociate associate_3 = new SalesAssociate();
 		double deviation;
 		associate_3 = team[numberOfAssociates+1];
-		System.out.println("Average sales per associate is $" + averageSales +
-							"\nThe highest sales figure is $" + highestSales +
+		System.out.println( "\nAverage sales per associate is $" + averageSales +
+							"\nThe highest sales figure is $" + highestSales + "\n" +
 							"\nThe following had the highest sales:" +
 							"\nName : " + associate_3.getName() +
 							"\nSales : $" + highestSales +
-							"\n$" + (highestSales-averageSales) + "above the average." +
-							"\nThe rest performed as follows :\n\n");
+							"\n$" + (highestSales-averageSales) + " above the average.\n" +
+							"\nThe rest performed as follows :");
 		
 		for(int i = 0;i<=numberOfAssociates;i++){
 			associate_3 = team[i];
@@ -63,9 +63,9 @@ public class SalesReporter {
 			System.out.println("Sales : $" + associate_3.getSales());
 			deviation = associate_3.getSales() - averageSales;
 			if (deviation>=0)
-				System.out.println("$" + deviation + "above the average.\n");
+				System.out.println("$" + deviation + " above the average.\n");
 			else
-				System.out.println("$" + (-deviation) + "below the average.\n");
+				System.out.println("$" + (-deviation) + " below the average.\n");
 		}
 	}
 	
@@ -80,6 +80,7 @@ public class SalesReporter {
 		for(int t=1;t<=n;t++){
 			getData();
 		}
+		numberOfAssociates--;
 		
 		computeStats();
 		displayResults();
