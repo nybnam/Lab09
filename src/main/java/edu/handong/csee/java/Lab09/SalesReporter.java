@@ -7,7 +7,7 @@ public class SalesReporter {
 	private SalesAssociate[] team;
 	private int numberOfAssociates;
 
-	public void getDate(){
+	public void getData(){
 		
 	}
 	
@@ -19,9 +19,16 @@ public class SalesReporter {
 		
 	}
 	
+	public void run(){
+		getData();
+		computeStats();
+		displayResults();
+	}
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		
+		SalesReporter reporter = new SalesReporter();
+		reporter.run();
 	}
 
 }
