@@ -1,6 +1,6 @@
 package edu.handong.csee.java.Lab09;
 
-public class SalesReport {
+public class SalesReporter {
 	
 	private double highestSales;
 	private double averageSales;
