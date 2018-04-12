@@ -1,5 +1,16 @@
 package edu.handong.csee.java.Lab09;
 
+/**
+ * This class calculate average sales, find associate that make highestSales,
+ * and compare all associates to average.
+ * The SalesReporter has highestSales, averageSales, numberOfAssociates and team members.
+ * The SalesReporter has getData(), computeStats(), and displayResults() methods.
+ * 
+ * 21500222 Nam Yunbin
+ * 
+ */
+
+
 import java.util.Scanner;
 public class SalesReporter {
 	
