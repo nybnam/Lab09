@@ -88,6 +88,7 @@ public class SalesReporter {
 		}
 	}
 	
+	/** run methods that in SalesReporter */
 	public void run(){
 		int n;
 		System.out.println("Enter number of sales associates");
@@ -105,7 +106,7 @@ public class SalesReporter {
 		displayResults();
 	}
 
-	
+	/** Do run() method */
 	public static void main(String[] args) {
 		
 		SalesReporter reporter = new SalesReporter();
