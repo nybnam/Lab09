@@ -1,8 +1,7 @@
 package edu.handong.csee.java.Lab09;
 
 /**
- * This class calculate average sales, find associate that make highestSales,
- * and compare all associates to average.
+ * This class calculate average sales, find highestSales, compare all associates to average, and display it.
  * The SalesReporter has highestSales, averageSales, numberOfAssociates and team members.
  * The SalesReporter has getData(), computeStats(), and displayResults() methods.
  * 
@@ -19,6 +18,7 @@ public class SalesReporter {
 	private SalesAssociate[] team;
 	private int numberOfAssociates=0;
 
+	/** Get name and sales from user and set them to SalesAssociate array team. */
 	public void getData(){
 		String name;
 		double sales;
@@ -34,6 +34,7 @@ public class SalesReporter {
 		team[numberOfAssociates] = associate;
 	}
 	
+	/** find highest sales and calculate average sales */	
 	public void computeStats(){
 		double SumforAverage = 0.0;
 		highestSales = 0.0;
@@ -52,6 +53,7 @@ public class SalesReporter {
 		
 	}
 	
+	/** display highest sales and its associate, and the other associate and sales compare to average. */
 	public void displayResults(){
 		SalesAssociate associate_3 = new SalesAssociate();
 		
