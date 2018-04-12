@@ -17,7 +17,7 @@ public class SalesReporter {
 	private double highestSales;
 	private double averageSales;
 	private SalesAssociate[] team;
-	private int numberOfAssociates = 0;
+	private int numberOfAssociates=0;
 
 	public void getData(){
 		String name;
@@ -32,34 +32,38 @@ public class SalesReporter {
 		associate.setName(name);
 		associate.setSales(sales);
 		team[numberOfAssociates] = associate;
-		numberOfAssociates++;
 	}
 	
 	public void computeStats(){
 		double SumforAverage = 0.0;
-		String BestAssociate = "";
 		highestSales = 0.0;
 		SalesAssociate associate_2 = new SalesAssociate();
+		
 		for(int i = 0; i<=numberOfAssociates ;i++){
 			associate_2 = team[i];
 			SumforAverage += associate_2.getSales();
 			
 			if(highestSales<=associate_2.getSales()){
 				highestSales=associate_2.getSales();
-				BestAssociate = associate_2.getName();
 			}
 		}
 		
 		averageSales = SumforAverage/(numberOfAssociates+1);
-		associate_2.setName(BestAssociate);
-		associate_2.setSales(highestSales);
-		team[numberOfAssociates+1] = associate_2;
+		
 	}
 	
 	public void displayResults(){
 		SalesAssociate associate_3 = new SalesAssociate();
+		
 		double deviation;
-		associate_3 = team[numberOfAssociates+1];
+		int bestAssociate = 0;
+		
+		for(int k = 0; k<=numberOfAssociates;k++){
+			if(team[k].getSales()==highestSales)
+				bestAssociate = k;
+		}
+		associate_3 = team[bestAssociate];
+		
 		System.out.println( "\nAverage sales per associate is $" + averageSales +
 							"\nThe highest sales figure is $" + highestSales + "\n" +
 							"\nThe following had the highest sales:" +
@@ -69,6 +73,8 @@ public class SalesReporter {
 							"\nThe rest performed as follows :");
 		
 		for(int i = 0;i<=numberOfAssociates;i++){
+			if(i==bestAssociate)
+				continue;
 			associate_3 = team[i];
 			System.out.println("Name : " + associate_3.getName());
 			System.out.println("Sales : $" + associate_3.getSales());
@@ -88,10 +94,10 @@ public class SalesReporter {
 		SalesAssociate[] A = new SalesAssociate[10];
 		team = A;
 		
-		for(int t=1;t<=n;t++){
+		for(int t=0;t<n;t++){
+			numberOfAssociates = t;
 			getData();
 		}
-		numberOfAssociates--;
 		
 		computeStats();
 		displayResults();
