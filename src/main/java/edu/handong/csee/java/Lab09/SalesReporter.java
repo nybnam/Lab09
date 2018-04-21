@@ -5,8 +5,8 @@ import java.util.Scanner;
 
 /**
  * This class calculate average sales, find highestSales, compare all associates to average, and display it.
- * The SalesReporter has highestSales, averageSales, numberOfAssociates and team members.
- * The SalesReporter has getData(), computeStats(), and displayResults() methods.
+ * The SalesReporter has members which are highestSales, averageSales, numberOfAssociates and team.
+ * The SalesReporter has methods which are getData(), computeStats(), and displayResults().
  * 
  * 21500222 Nam Yunbin
  * 
